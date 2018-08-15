@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block 'content' %}
+Detale autora: <br>
+{{author.first_name}} {{author.last_name}}
+ <a href ="{%  url 'shelf:author-view' %}">Wróć do listy</a>
+{% endblock %}
+

@@ -1,7 +1,5 @@
-from django.db import models
-
-from django.db import models
 from django.utils.html import format_html
+from django.db import models
 
 class Author(models.Model):
     first_name = models.CharField(max_length=20)

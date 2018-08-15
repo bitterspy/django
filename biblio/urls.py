@@ -13,12 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+#from django.conf.urls import url, include, patterns
+from django.urls import path, include
 from django.contrib import admin
-from django.urls import path
-
-from shelf.views import AuthorListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('authors/', AuthorListView.as_view())
+    path('shelf/', include('shelf.urls', namespace='shelf')) #załącza plik shelf.urls z dodatkowymi urlsami
+                                                        #oraz namespace (name) do grupy widoków (żeby jakaś inna aplikacja nie postawiła takich samych nazw)
 ]
