@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, FormView
 from .models import Message
 from .forms import MessageForm
+from django import forms
 
 class MessageListView(ListView):
     message = Message

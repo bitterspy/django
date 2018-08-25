@@ -16,9 +16,10 @@ Including another URLconf
 #from django.conf.urls import url, include, patterns
 from django.urls import path, include
 from django.contrib import admin
+from contact.views import MessageAddView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('shelf/', include('shelf.urls', namespace='shelf')) #załącza plik shelf.urls z dodatkowymi urlsami
-                                                        #oraz namespace (name) do grupy widoków (żeby jakaś inna aplikacja nie postawiła takich samych nazw)
+    path('shelf/', include('shelf.urls', namespace='shelf')), #załącza plik shelf.urls z dodatkowymi urlsami oraz namespace (name) do grupy widoków (żeby jakaś inna aplikacja nie postawiła takich samych nazw)
+    path('contact/', MessageAddView.as_view(), name='message-form')
 ]
