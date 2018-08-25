@@ -9,7 +9,7 @@ class AuthorAdmin(admin.ModelAdmin):
 
 class BookAdmin(admin.ModelAdmin):
     search_fields = ['title']                                               #jakie pole ma slużyć do wyszukiwania
-    list_display = ['title','author','isbn','publisher','colored_name']     #jakie kolumny wyświetlać, colored name
+    list_display = ['title','author','isbn','publisher']     #jakie kolumny wyświetlać, colored name
                                                                             #daje wartości w kolorze (definicja w models.py)
 
 

@@ -21,14 +21,5 @@ class Book(models.Model):
     isbn = models.CharField(max_length=17)
     publisher = models.ForeignKey(Publisher, on_delete=models.PROTECT)
 
-    # funkcja do kolorowania tekstu w tablece
-    def colored_name(self):
-        return format_html(
-            '<span style="color:red;">{} {}</span>',
-            self.title,
-            self.author,
-            self.isbn,
-        )
-
     def __str__(self):
         return "{autor} - {tytul}".format(autor=self.author,tytul=self.title)
