@@ -1,13 +1,23 @@
 from django.utils.html import format_html
 from django.db import models
 
+from django.utils.translation import gettext_lazy as _
+
 class Author(models.Model):
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=50)
+    first_name = models.CharField(verbose_name=_("first name"), max_length=20)
+    last_name = models.CharField(verbose_name=_("last name"), max_length=50)
 
     #wyświetla zamiast nazwy klasy, jej pola
     def __str__(self):
         return "{first_name} {last_name}".format(first_name=self.first_name, last_name=self.last_name)
+
+    # klasa Meta - tutaj umieszczamy wszystkie dodatkowe informacje
+    # poza nazwami pól jak wyżej
+    class Meta:
+        ordering = ("last_name", "first_name")
+        verbose_name = _('author')
+        verbose_name_plural = _('authors')
+
 
 class Publisher(models.Model):
     name = models.CharField(max_length=70)
