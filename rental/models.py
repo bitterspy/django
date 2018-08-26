@@ -4,6 +4,7 @@ from shelf.models import BookItem
 
 from django.utils.timezone import now
 
+from django.utils.translation import ugettext_lazy as _
 
 class Rental(models.Model):
     who = models.ForeignKey(User, on_delete=models.PROTECT)
