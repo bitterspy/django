@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from .models import Author, Publisher, Book
+from rental.models import Rental
 
 class AuthorAdmin(admin.ModelAdmin):
     search_fields = ['last_name', 'first_name']
@@ -16,3 +17,4 @@ class BookAdmin(admin.ModelAdmin):
 admin.site.register(Author,AuthorAdmin)                     #rejestruje model i klasę nim zarządzającą
 admin.site.register(Book,BookAdmin)
 admin.site.register([Publisher])
+admin.site.register([Rental])

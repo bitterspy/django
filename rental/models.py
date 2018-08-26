@@ -11,5 +11,6 @@ class Rental(models.Model):
     #null=True - informacja do bazy danych, że pole może być pust
     #blank=True - informacja dla formularza, że pole moze być puste
     returned = models.DateTimeField(null=True, blank=True)
-    def __init__(self):
+    # def __init__(self):
+    def __unicode__(self):
         return self.what
