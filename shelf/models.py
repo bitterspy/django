@@ -29,8 +29,8 @@ class Publisher(models.Model):
 class BookCategory(models.Model):
     category = models.CharField(max_length=50)
 
-    def __init__(self):
-        return self.name
+    def __str__(self):
+        return self.category
 
 
 class Book(models.Model):
@@ -42,7 +42,7 @@ class Book(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.PROTECT)
 
     def __str__(self):
-        return "{autor} - {tytul}".format(autor=self.author,tytul=self.title)
+        return "{autors} - {tytul}".format(autors=self.authors,tytul=self.title)
 
 class BookEdition(models.Model):
     """
@@ -71,6 +71,6 @@ class BookItem(models.Model):
     catalogue_number = models.CharField(max_length=30)
     cover_type = models.CharField(max_length=4, choices=COVER_TYPES)
 
-    def __init__(self):
+    def __str__(self):
         return "{edition} {cover}".format(edition=self.edition, cover=self.get_cover_type_display())
 

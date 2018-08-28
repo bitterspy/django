@@ -6,4 +6,5 @@ app_name = 'shelf'
 urlpatterns = [
     path('authors/', AuthorListView.as_view(), name = 'author-view'),
     path('authors/<int:pk>/', AuthorDetailView.as_view(), name='author-detail'), #<int:id> oznacza, że pojawią się cyfry a id to zmienna przekazywana do widoku
+    path('books/<int:pk>/', BookDetailView.as_view(), name='author-detail'),
 ]
