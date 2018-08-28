@@ -3,7 +3,7 @@
 Szczegóły książki: <br>
 <ul>
 {% for book in object_list %}
-    <li>{{book.title}} -
+    <li><a href="{% url 'shelf:book-detail' book.id %}"> {{book.title}} </a> -
         {% for author in book.authors.all %}
         {{ author.first_name }} {{ author.last_name }}{% if not forloop.last %}, {% endif %}
         {% endfor %}
