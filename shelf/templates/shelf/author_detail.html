@@ -15,10 +15,11 @@ Detale autora: <br>
   <!--</tr>-->
   <tr>
     {%for book in author.book_set.all%}
-      <td class="tg-0lax">{{book.title}}</td>
+    <td class="tg-0lax">{{book.title}}</a></td>
     {% endfor %}
   </tr>
 </table>
- <a href ="{%  url 'shelf:author-view' %}">Wróć do listy</a>
+  <a href ="{%  url 'shelf:author-view' %}">Wróć do listy</a>
+  <a href ="{%  url 'shelf:book-detail' %}">s</a>
 {% endblock %}
 

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block 'content' %}
+Szczegóły książki: <br>
+<ul>
+{% for book in object_list %}
+    <li>{{book.title}} -
+        {% for author in book.authors.all %}
+        {{ author.first_name }} {{ author.last_name }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </li>
+{% endfor %}
+</ul>
+
+{% endblock %}
