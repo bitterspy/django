@@ -2,6 +2,7 @@ from django.utils.html import format_html
 from django.db import models
 
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse_lazy
 
 class Author(models.Model):
     first_name = models.CharField(verbose_name=_("first name"), max_length=20)
@@ -44,6 +45,10 @@ class Book(models.Model):
     def __str__(self):
         return "{autors} - {tytul}".format(autors=self.authors,tytul=self.title)
 
+    #dodaliśmy tę funkcję, żeby utworzyć skrót do wykorzystania w szablonie author_detail
+    def get_absolute_url(self):
+        return reverse_lazy('shelf:book-detail', kwargs={'pk':self.id})
+
 class BookEdition(models.Model):
     """
     wydanie konkretnej książki
@@ -55,7 +60,7 @@ class BookEdition(models.Model):
     isbn = models.CharField(max_length=17, blank=True)
 
     def __str__(self):
-        return "{tytul} {wydawca}".format(tytul=self.title, wydawca = self.publisher)
+        return "{tytul} - {wydawca}".format(tytul=self.book.title, wydawca = self.publisher)
 
 COVER_TYPES = (
     ('soft','Soft'),

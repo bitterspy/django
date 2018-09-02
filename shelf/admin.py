@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Author, Publisher, Book, BookCategory
+from .models import Author, Publisher, Book, BookCategory, BookEdition
 from rental.models import Rental
 
 class AuthorAdmin(admin.ModelAdmin):
@@ -22,3 +22,4 @@ admin.site.register(Book,BookAdmin)
 admin.site.register(BookCategory, BookCategoryAdmin)
 admin.site.register([Publisher])
 admin.site.register([Rental])
+admin.site.register([BookEdition])

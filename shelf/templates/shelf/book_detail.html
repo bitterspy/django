@@ -1,7 +1,13 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% load shelf_tags%}
 {% block 'content' %}
 Detale książki: <br>
 {{ book.title }}
+
+<h2>Wydania:</h2>
+{% for edition in book.bookedition_set.all %}
+    <!--{{ edition.date | date:"Y" }} - {{ edition.publisher.name }}-->
+    {{ edition.date | pub_date }} - {{ edition.publisher.name }} <!-- zmieniliśmy na własną zdefiniowaną funkcję daty z shelf.tags.py
+{% endfor %}
 
 {% endblock %}
 

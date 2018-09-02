@@ -15,7 +15,7 @@ Detale autora: <br>
   <!--</tr>-->
   <tr>
     {%for book in author.book_set.all%}
-    <td class="tg-0lax"><a href="{% url 'shelf:book-detail' book.id %}"> {{book.title}} </a></td>
+    <td class="tg-0lax"><a href="{{ book.get_absolute_url }}"> {{book.title}} </a></td>
     {% endfor %}
   </tr>
 </table>
