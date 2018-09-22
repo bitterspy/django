@@ -1,13 +1,30 @@
-{% extends "base.html" %} {% load shelf_tags%}
+{% extends "base.html" %} {% load shelf_tags %} <!-- załaduj shelf_tags z defiicją show_edition i przekaż tam object-->
 {% block 'content' %}
 Detale książki: <br>
-{{ book.title }}
+{{ object.title }}
 
 <h2>Wydania:</h2>
+
+<!--WERSJA 2:
+wyświetlanie bardziej uniwersalne poprzez tag uniwersalny
+czyli generalnie obiekt, który może mieć edycje, a jego definicja
+ jest w pliku show_editions: -->
+
+<!--{% show_editions object %}-->
+
+
+<!--<ul>{% for edition in object.editions.all %}-->
+    <!--<li>{{ edition.date | pub_date }} - {{ edition.publisher.name }}</li>-->
+    <!--{% endfor %}</ul>-->
+
+<!--WERSJA 1:
+wyświetlanie przez odwołanie do pola bookedition -->
 {% for edition in book.bookedition_set.all %}
-    <!--{{ edition.date | date:"Y" }} - {{ edition.publisher.name }}-->
-    {{ edition.date | pub_date }} - {{ edition.publisher.name }} <!-- zmieniliśmy na własną zdefiniowaną funkcję daty z shelf.tags.py
-{% endfor %}
+    <!--WERSJA 1.1: filtrowanie przez zawężenie pola do roku:-->
+     {{ edition.date | date:"Y" }} - {{ edition.publisher.name }}
+    <!--WERSJA 1.2: filtrowanie przez wykorzystanie tagu "pub_date":-->
+     <!--{{ edition.date | pub_date }} - {{ edition.publisher.name }} &lt;!&ndash; zmieniliśmy na własną zdefiniowaną funkcję daty z shelf.tags.py-->
+{% endfor %}-->
 
 {% endblock %}
 

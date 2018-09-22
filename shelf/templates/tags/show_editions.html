@@ -1,0 +1,5 @@
+<!--Ładuje plik z definicją tagów-->
+{% load shelf_tags %}
+<ul>{% for edition in editions %}
+    <li>{{ edition.date|pub_date }} - {{ edition.publisher.name }}</li>
+    {% endfor %}</ul>

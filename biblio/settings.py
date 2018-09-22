@@ -116,6 +116,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+#AUTH_USER_MODEL = 'users.BiblioUser' # nazwa aplikacji i nazwa modelu, który w tej aplikacji jest zdefiniowany
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/

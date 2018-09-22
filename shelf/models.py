@@ -46,6 +46,7 @@ class Book(models.Model):
         return "{autors} - {tytul}".format(autors=self.authors,tytul=self.title)
 
     #dodaliśmy tę funkcję, żeby utworzyć skrót do wykorzystania w szablonie author_detail
+    #zamienia ona nazwę widoku, plus parametry na konkretną ścieżkę
     def get_absolute_url(self):
         return reverse_lazy('shelf:book-detail', kwargs={'pk':self.id})
 
@@ -53,7 +54,7 @@ class BookEdition(models.Model):
     """
     wydanie konkretnej książki
     """
-    book = models.ForeignKey(Book, on_delete=models.PROTECT)
+    book = models.ForeignKey(Book, related_name='editions', on_delete=models.PROTECT,)
     publisher = models.ForeignKey(Publisher, on_delete=models.PROTECT)
     date = models.DateField()
     # blank = True oznacza, że nie trzeba wypełniać pola formularza
